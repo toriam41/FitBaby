@@ -5,12 +5,12 @@ import AppNavigator from './AppNavigator'
 
 const App = () => { // App is a function component
   return (
-    <SafeAreaView style={styles.root}>
-      <AppNavigator/>
-    </SafeAreaView>
     /*<SafeAreaView style={styles.root}>
-      <LoginScreen/>
+      <AppNavigator/>
     </SafeAreaView>*/
+    <SafeAreaView style={styles.root}>
+      <LoginScreen/>
+    </SafeAreaView>
 
     
   )
@@ -19,7 +19,7 @@ const App = () => { // App is a function component
 const styles = StyleSheet.create({ 
   root: {
     flex: 1,
-    backgroundColor: '#d5cae9',
+    backgroundColor: '#ffe289',
   }
 });
 

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({ //styling the home screen
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#d5cae9',
+        backgroundColor: '#ffe289',
     },
     title: {
         fontSize: 24,
