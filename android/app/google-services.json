@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "764310667268",
+    "project_id": "fitbaby-fc5eb",
+    "storage_bucket": "fitbaby-fc5eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764310667268:android:da75a5f227af2aaa69b551",
+        "android_client_info": {
+          "package_name": "com.fitbaby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764310667268-ti9ntvd8l8sbpf4ks7lp4dke5vnr9gj5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitbaby",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "764310667268-4u11kdgctkjpc19pqkn22bqpheat6ik3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrpOagsUMDMwTZpcRCDcM22bLlClsb9Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764310667268-4u11kdgctkjpc19pqkn22bqpheat6ik3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
