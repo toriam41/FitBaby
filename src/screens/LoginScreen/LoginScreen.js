@@ -1,50 +1,47 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, ScrollView, StyleSheet, Image, useWindowDimensions } from 'react-native';
 import Logo from '../../../src/FitBaby_Logo.png';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { initializeApp } from 'firebase/app';
-import {addDoc, collection, getFirestore} from 'C:/Users/BenjaminNguyen/Fitbaby/node_modules/firebase/firestore';
 import {app, db, auth} from '../../firebase-config';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginScreen = () => { //login screen
-
-    //database variables into collection
-    const db = getFirestore(app); //database
-    const {email, setEmail} = React.useState(''); //email
-    const {password, setPassword} = React.useState(''); //password
-
-    const [loading, setLoading] = React.useState(false); 
-    const [errorMessage, setErrorMessage] = React.useState('');
-
+    
     //height used for logo size
     const {height} = useWindowDimensions(); 
 
-    async function handleLogin() { //function to handle login into firebase, STILL WORKING ON THIS
-        try {
-            setLoading(true);
-            await new Promise((resolve) => setTimeout(resolve, 500));
-            if (//if email and password are empty
-                email === '' ||
-                password === ''
-            ){  //set error message
-                setErrorMessage('Please fill in all fields');
-                return;
-                setLoading(false);
+    //database variables into collection
+    const [email, setEmail] = useState(''); //email
+    const [password, setPassword] = useState(''); //password
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+                //console.log('User logged in: ', user.email, user.password);
             }
-            else {
-                const docRef = await addDoc(collection(db, "users"), { //add user to database
-                    email: 'test.email',
-                    password: 'test.password',
-                });
-            setLoading(false);
-            setSubmitted(true);
-            console.log("Document written with ID: ", docRef.id);
-        }  
-    }catch(e){
-        console.log("Error:", e);
-    }};
+        })
+        return unsubscribe;
+    })
+
+    const handleLogin = () => {
+        if (email && password) {
+          auth.signInWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+              const user = userCredentials.user;
+              console.log('Logged in with user email', user.email, user.password);
+
+              // TODO: navigate to the home screen
+              //navigation.navigate('Home');
+            })
+            .catch((error) => console.log(error.message))
+        } else {
+          console.log('Email and password are required')
+        }
+      }
 
 
     //Create an account using Auth.js
@@ -82,6 +79,7 @@ const LoginScreen = () => { //login screen
             placeholder="Email" 
             value={email} 
             setValue={setEmail}
+            secureTextEntry={false}
             />
 
             <CustomInput //input field for password
@@ -90,6 +88,7 @@ const LoginScreen = () => { //login screen
             setValue={setPassword}
             secureTextEntry={true}
             />
+
 
             <CustomButton text="Login" onPress={onLoginPressed}/>
             <CustomButton text="Forgot Password" onPress={onForgotPasswordPressed} />
