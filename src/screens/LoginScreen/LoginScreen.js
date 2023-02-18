@@ -11,6 +11,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 
 const LoginScreen = () => { //login screen
     
+    const navigation = useNavigation();
+
     //height used for logo size
     const {height} = useWindowDimensions(); 
 
@@ -43,15 +45,9 @@ const LoginScreen = () => { //login screen
         }
       }
 
-
-    //Create an account using Auth.js
-    /*const handleLogin = async () => {
-        try {
-            await createUserWithEmailAndPassword(email, password);
-        } catch (error) {
-            setError(error.message);
-        }
-    }*/
+    const handleSignUp = () => {
+      navigation.navigate('Register');
+    }
 
     const onLoginPressed = () => {
         handleLogin();
@@ -62,7 +58,7 @@ const LoginScreen = () => { //login screen
     }
 
     const onCreateAccountPressed = () => {
-        console.warn('Create Account Pressed');
+        handleSignUp();
     }
 
     return (
