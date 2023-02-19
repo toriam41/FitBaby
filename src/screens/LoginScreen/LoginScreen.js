@@ -50,7 +50,8 @@ const LoginScreen = () => { //login screen
     }
 
     const onLoginPressed = () => {
-        handleLogin();
+      handleLogin();
+      navigation.navigate('Home');
     }
 
     const onForgotPasswordPressed = () => {

@@ -12,8 +12,8 @@ const HomeScreen = ({navigation}) => { //navigation is a prop that is passed to 
                 //color = "#FBEC9D" // change color of button
                 />
                 <Button
-                title = "Fitbaby"
-                onPress = {() => navigation.navigate('Fitbaby')}
+                title = "FitBaby"
+                onPress = {() => navigation.navigate('FitBaby')}
                 />
                 <Button
                 title = "Exercises"

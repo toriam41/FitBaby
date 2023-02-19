@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+/*import { createStackNavigator } from '@react-navigation/stack';
 //import { createAppContainer } from 'react-navigation';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
@@ -46,3 +46,4 @@ function AppNavigator({}) {
 }
 
 export default AppNavigator;
+*/
