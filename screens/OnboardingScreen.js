@@ -7,7 +7,7 @@ const OnboardingScreen = ({navigation}) => {
     return (
         <Onboarding
         onSkip={() => navigation.replace("Login")}
-        onDone={() => navigation.navigate("Login")}
+        onDone={() => navigation.navigate("SignUp")}
         pages={[
             {
                 backgroundColor: '#ffcd89',

@@ -11,15 +11,22 @@ import ExercisesScreen from './src/screens/ExercisesScreen';
 import FitBabyScreen from './src/screens/FitBabyScreen';
 import RoutineScreen from './src/screens/RoutineScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
+import OnboardingScreen from 'C:/Users/BenjaminNguyen/Fitbaby/screens/OnboardingScreen.js'
+import LoginScreen2 from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 
 const Stack = createStackNavigator();
 
 const App = () => { // App is a function component
+  //{initialRouteName: 'Onboarding'}
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Register" component={RegisterScreen}/>
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+        <Stack.Screen name="SignUp" component={SignupScreen}/>
+        <Stack.Screen name="Login" component={LoginScreen2} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="FitBaby" component={FitBabyScreen} />

@@ -1,14 +1,50 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
+import { useNavigation } from '@react-navigation/native';
+import {auth} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config.js';
 
-const SignupScreen =  ({navigation}) => {
-    const [email, setEmail] = useState();
+const SignupScreen =  () => {
+    //database variables into collection
+    const [email, setEmail] = useState(); 
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+
+    //navigation
+    const navigation = useNavigation();
+
+    //check if user is logged in
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged(user => {
+          if (user) {
+              navigation.replace('Home');
+          }
+      })
+      return unsubscribe;
+    })
+
+    const handleLogin = () => {
+      navigation.navigate('Login');
+    }
+
+    //sign up function
+    const handleSignUp = () => {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          console.log('Created user with email', user.email, user.password);
+        })
+        .catch((error) => console.warn(error.message))
+    }
+
+    //button functions
+    const onLoginPressed = () => {handleLogin();}
+    const onForgotPasswordPressed = () => {console.warn('Forgot Password Pressed');}
+    const onCreateAccountPressed = () => {handleSignUp();}
 
     return (
         <View style={styles.container}>
@@ -42,10 +78,15 @@ const SignupScreen =  ({navigation}) => {
     
           <FormButton
             buttonTitle="Sign Up"
-            onPress={() => alert("Sign up clicked!")}
+            onPress={onCreateAccountPressed}
           />
     
           <View style={styles.textPrivate}>
+            <TouchableOpacity
+            style={styles.forgotButton}
+            onPress={() => navigation.navigate("Login")}>
+              <Text style={styles.navButtonText}>Already have an account? Login here</Text>
+            </TouchableOpacity>
             <Text style={styles.color_textPrivate}>
               By registering, you confirm that you accept our
             </Text>

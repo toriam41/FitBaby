@@ -1,15 +1,51 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-
+import {auth} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config.js';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
+import { ScrollView } from 'react-native';
 
 const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
+    const onLoginPressed = () => {handleLogin();}
+    const onForgotPasswordPressed = () => {console.warn('Forgot Password Pressed');}
+    const onCreateAccountPressed = () => {handleSignUp();}
+
+    const handleLogin = () => {
+      if (email && password) {
+        auth.signInWithEmailAndPassword(email, password)
+          .then(userCredentials => {
+            const user = userCredentials.user;
+            console.log('Logged in with user email', user.email, user.password);
+            console.warn('Login Successful!');
+            // TODO: navigate to the home screen
+            navigation.navigate('Home');
+          })
+          .catch((error) => console.log(error.message))
+      } else {
+        console.log('Email and password are required')
+        console.warn('Login Failed!');
+        
+      }
+    }
+
+    //sign up function
+    const handleSignUp = () => {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          console.log('Created user with email', user.email, user.password);
+        })
+        .catch((error) => console.log(error.message))
+      navigation.navigate('Login');
+    }
+
     return (
+      <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
           <Image source={require("../assets/logo.png")} style={styles.logo} />
           <Text style={styles.text}>FitBaby</Text>
@@ -30,11 +66,13 @@ const LoginScreen = ({navigation}) => {
               
           <FormButton 
             buttonTitle="Sign In"
-            onPress={() => alert("Sign in clicked!")}/>
+            onPress={onLoginPressed}/>
 
-          <TouchableOpacity style={styles.forgotButton}>
-            <Text style={styles.navButtonText}>Forgot Password?</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+            style={styles.forgotButton}
+            onPress={() => navigation.navigate("ForgotPassword")}>
+              <Text style={styles.navButtonText}>Forgot Password?</Text>
+            </TouchableOpacity>
 
           <SocialButton
             buttonTitle="Sign In with Facebook"
@@ -55,11 +93,12 @@ const LoginScreen = ({navigation}) => {
 
           <TouchableOpacity
             style={styles.forgotButton}
-            onPress={() => navigation.navigate("Signup")}>
+            onPress={() => navigation.navigate("SignUp")}>
               <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
           </TouchableOpacity>
-
+          
         </View>
+      </ScrollView>
     )
 }
 
