@@ -1,22 +1,27 @@
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import React, {useState} from 'react'
-import {firebase} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config.js'
-import Parse from 'parse/react-native.js';
-import { useNavigation } from '@react-navigation/native';
+import {auth} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config'
 
 const ForgotPasswordScreen = () => {
-    const navigation = useNavigation();
 
     const [email, setEmail] = useState('');
 
-    const resetPassword = async function () {
-        const emailValue = email;
+    const resetPassword = async function (email) {
+        //const emailValue = email;
+        try {
+            await auth.sendPasswordResetEmail(email)
+            Alert.alert('Password reset email sent successfully');
+        }
+        catch (error) {
+            Alert.alert('There is no account associated with this email :(');
+        }
 
-        Parse.User.requestPasswordReset(emailValue).then(() => {
+        /*firebase.auth().sendPasswordResetEmail(emailValue)
+        .then(() => {
             Alert.alert('Password reset email sent successfully');
         }).catch((error) => {
             Alert.alert('Error sending password reset email', error.message);
-        });
+        });*/
     }
   return (
     <View>
@@ -25,7 +30,7 @@ const ForgotPasswordScreen = () => {
             placeholder="Email"
             onChangeText={(text) => setEmail(text)}
         />
-        <TouchableOpacity onPress={resetPassword}>
+        <TouchableOpacity onPress={() => resetPassword(email)}>
             <View>
                 <Text>Reset Password</Text>
             </View>
