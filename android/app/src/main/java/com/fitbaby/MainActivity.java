@@ -33,12 +33,9 @@ public class MainActivity extends ReactActivity {
         DefaultNewArchitectureEntryPoint.getConcurrentReactEnabled() // concurrentRootEnabled
         );
   }
-<<<<<<< HEAD
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
   }
-=======
->>>>>>> benjamin
 }
