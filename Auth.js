@@ -13,7 +13,7 @@ export const signOut = () => {
   return firebase.auth().signOut();
 };
 
-export const onAuthStateChanged = (callback) => {
+export const onAuthStateChanged = callback => {
   return firebase.auth().onAuthStateChanged(callback);
 };
 
