@@ -11,7 +11,7 @@ import Logo from '../../../src/FitBaby_Logo.png';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import {useNavigation} from '@react-navigation/native';
-import {auth} from '../../firebase-config';
+import {auth} from '../../../firebase-config';
 
 const LoginScreen = () => {
   //login screen

@@ -4,7 +4,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {useNavigation} from '@react-navigation/native';
-import {auth} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config.js';
+import {auth} from '../firebase-config';
 
 const SignupScreen = () => {
   //database variables into collection

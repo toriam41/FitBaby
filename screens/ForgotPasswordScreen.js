@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity, TextInput, Alert} from 'react-native';
 import React, {useState} from 'react';
-import {auth} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config';
+import {auth} from '../firebase-config';
 
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState('');

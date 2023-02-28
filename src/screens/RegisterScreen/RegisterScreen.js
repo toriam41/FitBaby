@@ -10,7 +10,7 @@ import {
 import Logo from '../../../src/FitBaby_Logo.png';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
-import {app, db, auth} from '../../firebase-config';
+import {app, db, auth} from '../../../firebase-config';
 import {useNavigation} from '@react-navigation/native';
 
 const RegisterScreen = () => {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import {auth} from 'C:/Users/BenjaminNguyen/Fitbaby/src/firebase-config.js';
+import {auth} from '../firebase-config';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';

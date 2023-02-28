@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
-import {auth} from '../../firebase-config';
+import {auth} from '../../../firebase-config';
 import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = ({navigation}) => {
