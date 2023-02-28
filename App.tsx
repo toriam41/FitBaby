@@ -11,7 +11,7 @@ import ExercisesScreen from './src/screens/ExercisesScreen';
 import FitBabyScreen from './src/screens/FitBabyScreen';
 import RoutineScreen from './src/screens/RoutineScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
-import OnboardingScreen from 'C:/Users/BenjaminNguyen/Fitbaby/screens/OnboardingScreen.js';
+import OnboardingScreen from './screens/OnboardingScreen.js';
 import LoginScreen2 from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
