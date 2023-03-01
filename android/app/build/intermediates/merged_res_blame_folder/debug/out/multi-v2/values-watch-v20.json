@@ -4,7 +4,7 @@
             "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\ca43decf68a06a3fafb5d782f3c7b8e4\\transformed\\jetified-play-services-auth-20.3.0\\res\\values-watch-v20\\values.xml",
+                    "source": "/Users/tori/.gradle/caches/transforms-3/ca43decf68a06a3fafb5d782f3c7b8e4/transformed/jetified-play-services-auth-20.3.0/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "/Users/tori/.gradle/caches/transforms-3/6c2bf8efa41ca69d6c96c3b6d859f53c/transformed/appcompat-1.4.1/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

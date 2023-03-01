@@ -6,14 +6,15 @@ import SocialButton from '../components/SocialButton';
 import {useNavigation} from '@react-navigation/native';
 import {auth} from '../firebase-config';
 
-const SignupScreen = () => {
+const SignupScreen = ({navigation}) => {
   //database variables into collection
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
 
   //navigation
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
+  
 
   //check if user is logged in
   useEffect(() => {
@@ -31,25 +32,28 @@ const SignupScreen = () => {
 
   //sign up function
   const handleSignUp = () => {
-    auth
+    if (email === null || password === null || confirmPassword === null) {
+      alert("Please fill in all fields and try again.")
+    }
+    else if ((password && confirmPassword) && password === confirmPassword) {
+      auth
       .createUserWithEmailAndPassword(email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Created user with email', user.email, user.password);
       })
       .catch(error => console.warn(error.message));
+    }
+    else {
+      alert("Passwords do not match. Please try again!");
+    }
   };
 
   //button functions
-  const onLoginPressed = () => {
-    handleLogin();
-  };
   const onForgotPasswordPressed = () => {
     console.warn('Forgot Password Pressed');
   };
-  const onCreateAccountPressed = () => {
-    handleSignUp();
-  };
+  
 
   return (
     <View style={styles.container}>
@@ -75,13 +79,13 @@ const SignupScreen = () => {
 
       <FormInput
         labelValue={confirmPassword}
-        onChangeText={userPassword => setConfirmPassword(userPassword)}
+        onChangeText={confirmPassword => setConfirmPassword(confirmPassword)}
         placeholderText="Confirm Password"
         iconType="lock"
         secureTextEntry={true}
       />
 
-      <FormButton buttonTitle="Sign Up" onPress={onCreateAccountPressed} />
+      <FormButton buttonTitle="Sign Up" onPress={handleSignUp} />
 
       <View style={styles.textPrivate}>
         <TouchableOpacity
