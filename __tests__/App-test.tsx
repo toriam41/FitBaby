@@ -3,6 +3,7 @@
  */
 
 import 'react-native/types';
+import 'react-native';
 import React from 'react';
 import App from '../App';
 

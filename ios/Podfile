@@ -43,7 +43,11 @@ target 'FitBaby' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+<<<<<<< HEAD
   target 'FitBabyTests' do
+=======
+  target 'FitbabyTests' do
+>>>>>>> benjamin
     inherit! :complete
     # Pods for testing
   end
