@@ -4,7 +4,7 @@
             "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "/Users/tori/.gradle/caches/transforms-3/6c2bf8efa41ca69d6c96c3b6d859f53c/transformed/appcompat-1.4.1/res/values-v18/values-v18.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

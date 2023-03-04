@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {auth} from '../../../firebase-config';
-import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = ({navigation}) => {
   //navigation is a prop that is passed to the component
