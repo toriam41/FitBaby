@@ -14,9 +14,10 @@ import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 // NavBar
 import DisplayScreens from './navigation/DisplayScreens';
 
+const Stack = createStackNavigator();
 
 const App = () => { // App is a function component
-  const Stack = createStackNavigator();
+  
   const [isFirstLaunch, setIsFirstLaunch] = useState<Boolean | null>(null);
   let routeName;
 

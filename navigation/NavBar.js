@@ -12,6 +12,32 @@ import RoutineScreen from '../src/screens/RoutineScreen';
 
 const Tab = createBottomTabNavigator();
 
+const CustomTabButton = ({children, onPress}) => (
+  <TouchableOpacity 
+    onPress={onPress}
+    style={{
+      top: -10,
+      justifyContent: "center",
+      alignItems: "center",
+      ...styles.shadow
+    }} >
+      <View
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: 55,
+          width: 55,
+          backgroundColor: "#ffcd89",
+          borderRadius: 50,
+          marginBottom: 10,
+        }}>
+        {children}
+      </View>
+
+  </TouchableOpacity>             
+
+)
+
 const NavBar = () => {
   return (
     <>
@@ -50,11 +76,11 @@ const NavBar = () => {
                     style={{
                       height: 25,
                       width: 25,
-                      tintColor: focused ? "#ffe289" : "#748c94"
+                      tintColor: focused ? "#ffcd89" : "#748c94"
                     }} />
                   <Text
                     style={{
-                      color: focused ? "#ffe289" : "#748c94",
+                      color: focused ? "#ffcd89" : "#748c94",
                       fontSize: 12,
                     }}>myBABY</Text>                
                 </View>
@@ -74,17 +100,17 @@ const NavBar = () => {
                 }}>
                   <Image
                     source={
-                      focused ? require("../assets/icons/home-bold.png") : require("../assets/icons/home.png")
+                      focused ? require("../assets/icons/discover-bold.png") : require("../assets/icons/discover.png")
                     }
                     resizeMode="contain"
-                    style={{
+                    style={{  
                       height: 25,
                       width: 25,
-                      tintColor: focused ? "#85998a" : "#748c94"
+                      tintColor: focused ? "#ffcd89" : "#748c94"
                     }} />
                   <Text
                     style={{
-                      color: focused ? "#85998a" : "#748c94",
+                      color: focused ? "#ffcd89" : "#748c94",
                       fontSize: 12,
                     }}>DISCOVER</Text>                
                 </View>
@@ -96,28 +122,17 @@ const NavBar = () => {
           options={{ 
             header: () => null,
             tabBarIcon: ({ focused }) => (
-              <View 
+              <Image
+              source={require("../assets/icons/home-bold.png")}
+              resizeMode="contain"
               style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 2,
-              }}>
-                <Image
-                  source={
-                    focused ? require("../assets/icons/home-bold.png") : require("../assets/icons/home.png")
-                  }
-                  resizeMode="contain"
-                  style={{
-                    height: 25,
-                    width: 25,
-                    tintColor: focused ? "#ffcd89" : "#748c94"
-                  }} />
-                <Text
-                  style={{
-                    color: focused ? "#ffcd89" : "#748c94",
-                    fontSize: 12,
-                  }}>HOME</Text>                
-              </View>
+                height: 25,
+                width: 25,
+                tintColor: "#ffffff"
+              }} />
+            ),
+            tabBarButton: (props) => (
+              <CustomTabButton {... props}/>
             )
           }} />
           <Tab.Screen 
@@ -134,17 +149,17 @@ const NavBar = () => {
                 }}>
                   <Image
                     source={
-                      focused ? require("../assets/icons/home-bold.png") : require("../assets/icons/home.png")
+                      focused ? require("../assets/icons/progress-bold.png") : require("../assets/icons/progress.png")
                     }
                     resizeMode="contain"
                     style={{
                       height: 25,
                       width: 25,
-                      tintColor: focused ? "#9b886f" : "#748c94"
+                      tintColor: focused ? "#ffcd89" : "#748c94"
                     }} />
                   <Text
                     style={{
-                      color: focused ? "#9b886f" : "#748c94",
+                      color: focused ? "#ffcd89" : "#748c94",
                       fontSize: 12,
                     }}>PROGRESS</Text>                
                 </View>
@@ -164,17 +179,17 @@ const NavBar = () => {
                 }}>
                   <Image
                     source={
-                      focused ? require("../assets/icons/home-bold.png") : require("../assets/icons/home.png")
+                      focused ? require("../assets/icons/routine-bold.png") : require("../assets/icons/routine.png")
                     }
                     resizeMode="contain"
                     style={{
                       height: 25,
                       width: 25,
-                      tintColor: focused ? "#86BBD8" : "#748c94"
+                      tintColor: focused ? "#ffcd89" : "#748c94"
                     }} />
                   <Text
                     style={{
-                      color: focused ? "#86BBD8" : "#748c94",
+                      color: focused ? "#ffcd89" : "#748c94",
                       fontSize: 12,
                     }}>ROUTINE</Text>                
                 </View>
