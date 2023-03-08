@@ -12,10 +12,7 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import {useNavigation} from '@react-navigation/native';
 import {auth} from '../../../firebase-config';
-<<<<<<< HEAD
-=======
 import HomeScreen from '../HomeScreen;';
->>>>>>> tori
 
 const LoginScreen = () => {
   //login screen
@@ -48,11 +45,7 @@ const LoginScreen = () => {
           console.log('Logged in with user email', user.email, user.password);
           console.warn('Login Successful!');
           // TODO: navigate to the home screen
-<<<<<<< HEAD
-          navigation.navigate('Home');
-=======
           navigation.navigate({HomeScreen});
->>>>>>> tori
         })
         .catch(error => console.log(error.message));
     } else {
