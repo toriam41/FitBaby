@@ -1,13 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {auth} from '../../../firebase-config';
-import {useNavigation} from '@react-navigation/native';
 
-const HomeScreen = ({navigation}) => {
-  //navigation is a prop that is passed to the component
 
-  //const navigation = useNavigation();
-
+const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to the component
   //signout function
   const handleSignOut = () => {
     auth
@@ -22,25 +18,6 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen</Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Routine"
-          onPress={() => navigation.navigate('Routine')}
-          //color = "#FBEC9D" // change color of button
-        />
-        <Button
-          title="FitBaby"
-          onPress={() => navigation.navigate('FitBaby')}
-        />
-        <Button
-          title="Exercises"
-          onPress={() => navigation.navigate('Exercises')}
-        />
-        <Button
-          title="Profile"
-          onPress={() => navigation.navigate('Profile')}
-        />
-      </View>
       <View>
         <Button
           title="Logout"
@@ -60,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffe289',
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 24,

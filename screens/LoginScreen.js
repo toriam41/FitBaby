@@ -29,7 +29,7 @@ const LoginScreen = ({navigation}) => {
           console.log('Logged in with user email', user.email, user.password);
           console.warn('Login Successful!');
           // TODO: navigate to the home screen
-          navigation.navigate('Home');
+          navigation.navigate('DisplayScreens');
         })
         .catch(error => console.log(error.message));
     } else {

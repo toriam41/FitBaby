@@ -1,25 +1,24 @@
+// packages
 import {SafeAreaView, Text, Image, StyleSheet} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {createStackNavigator} from '@react-navigation/stack';
-//import AppNavigator from './AppNavigator'
-import {NavigationContainer} from '@react-navigation/native';
 
-import HomeScreen from './src/screens/HomeScreen';
-import ExercisesScreen from './src/screens/ExercisesScreen';
-import FitBabyScreen from './src/screens/FitBabyScreen';
-import RoutineScreen from './src/screens/RoutineScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
-import OnboardingScreen from './screens/OnboardingScreen.js';
-import LoginScreen from './screens/LoginScreen.js';
+// screens
+import OnboardingScreen from './screens/OnboardingScreen';
+import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';  
 
+// NavBar
+import DisplayScreens from './navigation/DisplayScreens';
 
 const Stack = createStackNavigator();
 
-const App = () => {
-  const [isFirstLaunch, setIsFirstLaunch] = useState<boolean | null>(null);
+const App = () => { // App is a function component
+  
+  const [isFirstLaunch, setIsFirstLaunch] = useState<Boolean | null>(null);
   let routeName;
 
   useEffect(() => {
@@ -34,17 +33,16 @@ const App = () => {
     }); // add error handling
   }, []);
 
-  if (isFirstLaunch === null) { // hasn't been launched
+  if (isFirstLaunch === null) { // App hasn't been launched
     return null; // could add a Loader here as a placeholder 
   }
   else if (isFirstLaunch) { // first launch will show onboarding screen
     routeName = "Onboarding";
   }
   else {
-   routeName = "Login"
+   routeName = "DisplayScreens"
   }
-  // App is a function component
-  //{initialRouteName: 'Onboarding'}
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={routeName}>
@@ -53,24 +51,22 @@ const App = () => {
           component={OnboardingScreen}
           options={{ header: () => null }} />
         <Stack.Screen 
-          name="Signup"
-          component={SignupScreen}
-          options={ ({navigation}) => ({
-            title: '',
-            header: () => null, 
-            })
-          }/>
-        <Stack.Screen 
           name="Login" 
           component={LoginScreen} 
-          options={{ header: () => null }}/>
-        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="FitBaby" component={FitBabyScreen} />
-        <Stack.Screen name="Exercises" component={ExercisesScreen} />
-        <Stack.Screen name="Routine" component={RoutineScreen} />
-      </Stack.Navigator>
+          options={{ header: ({navigation}) => null }}/>
+        <Stack.Screen 
+          name="ForgotPassword" 
+          component={ForgotPasswordScreen}
+          options={{ title: "" }} />
+        <Stack.Screen 
+          name="Signup"
+          component={SignupScreen}
+          options={ ({navigation}) => ({header: () => null})}/>
+        <Stack.Screen 
+            name="DisplayScreens" 
+            component={DisplayScreens}
+            options={{ header: () => null }} />
+      </Stack.Navigator> 
     </NavigationContainer>
   );
 };
