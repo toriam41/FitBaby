@@ -4,7 +4,7 @@
             "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "/Users/tori/.gradle/caches/transforms-3/c1ce68bdfbeaab12285d1895b28b8032/transformed/core-1.7.0/res/values-pt/values-pt.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\c1ce68bdfbeaab12285d1895b28b8032\\transformed\\core-1.7.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/tori/.gradle/caches/transforms-3/341962aa71af30d43d5865a5b3308a10/transformed/browser-1.4.0/res/values-pt/values-pt.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\341962aa71af30d43d5865a5b3308a10\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/tori/.gradle/caches/transforms-3/6c2bf8efa41ca69d6c96c3b6d859f53c/transformed/appcompat-1.4.1/res/values-pt/values-pt.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
