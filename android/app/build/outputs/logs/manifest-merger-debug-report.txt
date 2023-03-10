@@ -219,11 +219,8 @@ MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\BenjaminNguyen\.grad
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\b465f98537f963958c13d6768614082d\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-async-storage_async-storage] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-<<<<<<< HEAD
-=======
 MERGED from [:react-native-community_checkbox] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\checkbox\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_checkbox] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\checkbox\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
->>>>>>> benjamin
 MERGED from [:react-native-community_masked-view] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\masked-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_masked-view] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\masked-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_auth] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-firebase\auth\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

@@ -10,6 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 
 const RoutineScreen = ({navigation}) => {
   //List of exercises (change to be pulled from database)
@@ -21,8 +22,7 @@ const RoutineScreen = ({navigation}) => {
       muscle: 'biceps',
       equipment: 'dumbbells',
       difficulty: 'beginner',
-      instructions:
-        'Seat yourself on an incline bench with a dumbbell in each hand. You should pressed firmly against he back with your feet together. Allow the dumbbells to hang straight down at your side, holding them with a neutral grip. This will be your starting position. Initiate the movement by flexing at the elbow, attempting to keep the upper arm stationary. Continue to the top of the movement and pause, then slowly return to the start position.',
+      instructions: '',
     },
     {
       id: 2,
@@ -31,8 +31,7 @@ const RoutineScreen = ({navigation}) => {
       muscle: 'legs',
       equipment: 'dumbbells',
       difficulty: 'easy',
-      instructions:
-        'Stand up with your torso upright and a dumbbell on each hand being held at arms length. The elbows should be close to the torso. The palms of the hands should be facing your torso. This will be your starting position. Now, while holding your upper arm stationary, exhale and curl the weight forward while contracting the biceps. Continue to raise the weight until the biceps are fully contracted and the dumbbell is at shoulder level. Hold the contracted position for a brief moment as you squeeze the biceps. Tip: Focus on keeping the elbow stationary and only moving your forearm. After the brief pause, inhale and slowly begin the lower the dumbbells back down to the starting position. Repeat for the recommended amount of repetitions.  Variations: There are many possible variations for this movement. For instance, you can perform the exercise sitting down on a bench with or without back support and you can also perform it by alternating arms; first lift the right arm for one repetition, then the left, then the right, etc.',
+      instructions: '',
     },
     {
       id: 3,
@@ -41,8 +40,7 @@ const RoutineScreen = ({navigation}) => {
       muscle: 'glutes',
       equipment: 'barbell',
       difficulty: 'intermediate',
-      instructions:
-        'Begin seated on the ground with a bench directly behind you. Have a loaded barbell over your legs. Using a fat bar or having a pad on the bar can greatly reduce the discomfort caused by this exercise. Roll the bar so that it is directly above your hips, and lean back against the bench so that your shoulder blades are near the top of it. Begin the movement by driving through your feet, extending your hips vertically through the bar. Your weight should be supported by your shoulder blades and your feet. Extend as far as possible, then reverse the motion to return to the starting position.',
+      instructions: '',
     },
     {
       id: 4,
@@ -51,15 +49,25 @@ const RoutineScreen = ({navigation}) => {
       muscle: 'legs',
       equipment: 'none',
       difficulty: 'beginner',
-      instructions:
-        'Stand with your feet together and your arms at your sides. Jump into the air with your legs spread wide apart and your arms overhead. Land with your feet together and your arms at your sides. Repeat.',
+      instructions: '',
     },
     {
       id: 5,
       name: 'test',
+      type: 'cardio',
+      muscle: 'legs',
+      equipment: 'none',
+      difficulty: 'beginner',
+      instructions: '',
     },
     {
       id: 6,
+      name: 'test2',
+      type: 'cardio',
+      muscle: 'legs',
+      equipment: 'none',
+      difficulty: 'beginner',
+      instructions: '',
     },
   ]);
 
@@ -69,28 +77,36 @@ const RoutineScreen = ({navigation}) => {
   };
 
   //sets inital state of checkbox according to id
-  const [isSelected, setIsSelected] = useState({
-    [routineList[0].id]: false,
-    [routineList[1].id]: false,
-    [routineList[2].id]: false,
-  });
+  const isSelectedInitialState = routineList.reduce(
+    (obj, item) => ({...obj, [item.id]: false}),
+    {},
+  );
 
-  const renderItem = ({item}) => (
+  const [isSelected, setIsSelected] = useState(isSelectedInitialState);
+
+  const handleDeleteExercise = id => {
+    setRoutineList(prevList => prevList.filter(item => item.id !== id));
+  };
+
+  const renderItem = ({item, drag, isActive}) => (
     <TouchableOpacity
-      style={styles.listItem}
+      style={[styles.listItem, isActive ? styles.listItemActive : null]}
       onPress={() =>
         Alert.alert(
           item.name,
           `Type: ${item.type}\nMuscle: ${item.muscle}\nDifficulty: ${item.difficulty}\n\nHow to: ${item.instructions}`,
         )
-      }>
+      }
+      onLongPress={drag}>
       <View style={styles.listItemLeft}>
         <Text style={styles.listItemTitle}>{item.name}</Text>
       </View>
       <TouchableOpacity style={styles.listItemButton}>
         <Text style={styles.listItemButtonText}>Edit</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.listItemButton}>
+      <TouchableOpacity
+        style={styles.listItemButton}
+        onPress={() => handleDeleteExercise(item.id)}>
         <Text style={styles.listItemButtonText}>Delete</Text>
       </TouchableOpacity>
       <CheckBox
@@ -101,6 +117,7 @@ const RoutineScreen = ({navigation}) => {
       />
     </TouchableOpacity>
   );
+
   //add exercise button shall navigate to exercises screen
   return (
     <View style={styles.container}>
@@ -115,10 +132,11 @@ const RoutineScreen = ({navigation}) => {
           style={styles.addExerciseButton}
         />
       </View>
-      <FlatList
+      <DraggableFlatList
         data={routineList}
         renderItem={renderItem}
         keyExtractor={item => item.id}
+        onDragEnd={({data}) => setRoutineList(data)}
       />
     </View>
   );
