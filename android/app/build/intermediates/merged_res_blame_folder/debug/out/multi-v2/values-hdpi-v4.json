@@ -4,7 +4,7 @@
             "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "/Users/tori/.gradle/caches/transforms-3/6c2bf8efa41ca69d6c96c3b6d859f53c/transformed/appcompat-1.4.1/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
