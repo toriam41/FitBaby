@@ -1,10 +1,18 @@
 import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
 import React, {useState} from 'react';
+import {handleDeleteExercise} from '../RoutineScreen/RoutineScreen';
 
-const ExercisesScreen = () => {
+const ExercisesScreen = ({navigation}) => {
+  //exercise data from API
   const [exerciseData, setExerciseData] = useState([]);
+
+  //exercise type from API
   const [selectedType, setSelectedType] = useState('');
 
+  //exercises added to routine to check for duplicates
+  const [routineList, setRoutineList] = useState([]);
+
+  //exercise types matching API types
   const exerciseTypes = [
     'cardio',
     'strength',
@@ -13,8 +21,9 @@ const ExercisesScreen = () => {
     'plyometrics',
     'powerlifting',
     'strongman',
-  ]; // Add other exercise types as needed
+  ];
 
+  //fetching exercise data from API
   const fetchExerciseCards = type => {
     const options = {
       method: 'GET',
@@ -32,17 +41,38 @@ const ExercisesScreen = () => {
       .catch(err => console.error(err));
   };
 
-  const renderExercises = ({item}) => (
-    <View key={item.id} style={styles.exerciseData}>
-      <Text>Exercise: {item.name}</Text>
-      <Text>Type: {item.type}</Text>
-      <Text>Equipment: {item.equipment}</Text>
-      <Text>Difficulty: {item.difficulty}</Text>
-      <Text>Muscle: {item.muscle}</Text>
-      <Text></Text>
-    </View>
-  );
+  //rendering exercise data, add to routine button navigates to routine and adds exercise
+  //button checks if exercise has been added
+  const renderExercises = ({item}) => {
+    const isAdded = routineList.includes(item);
 
+    return (
+      <View style={styles.exerciseData}>
+        <Text>Exercise: {item.name}</Text>
+        <Text>Type: {item.type}</Text>
+        <Text>Equipment: {item.equipment}</Text>
+        <Text>Difficulty: {item.difficulty}</Text>
+        <Text>Muscle: {item.muscle}</Text>
+        <Button
+          title={isAdded ? 'Added to Routine' : 'Add to Routine'}
+          onPress={() => {
+            if (!isAdded) {
+              setRoutineList(routineList => [...routineList, item]);
+              navigation.navigate('Routine', {exercise: item});
+            } /*else {
+              setRoutineList(routineList.filter(exercise => exercise !== item));
+              console.log('Exercise already added');
+            }*/
+          }}
+          disabled={isAdded}
+        />
+
+        <Text></Text>
+      </View>
+    );
+  };
+
+  //rendering exercise type buttons
   const renderExerciseTypeButton = type => (
     <Button
       title={type}
