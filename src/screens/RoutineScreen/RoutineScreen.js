@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   StyleSheet,
-  FlatList,
   TouchableOpacity,
-  ScrollView,
   View,
   Button,
   Alert,
@@ -12,68 +10,19 @@ import {
 import CheckBox from '@react-native-community/checkbox';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 
-const RoutineScreen = ({navigation}) => {
-  //List of exercises (change to be pulled from database)
-  const [routineList, setRoutineList] = useState([
-    {
-      id: 1,
-      name: 'Incline Hammer Curls',
-      type: 'strength',
-      muscle: 'biceps',
-      equipment: 'dumbbells',
-      difficulty: 'beginner',
-      instructions: '',
-    },
-    {
-      id: 2,
-      name: 'Hammer Curls',
-      type: 'strength',
-      muscle: 'legs',
-      equipment: 'dumbbells',
-      difficulty: 'easy',
-      instructions: '',
-    },
-    {
-      id: 3,
-      name: 'Barbell Hip Thrust',
-      type: 'powerlifting',
-      muscle: 'glutes',
-      equipment: 'barbell',
-      difficulty: 'intermediate',
-      instructions: '',
-    },
-    {
-      id: 4,
-      name: 'Jumping Jacks',
-      type: 'cardio',
-      muscle: 'legs',
-      equipment: 'none',
-      difficulty: 'beginner',
-      instructions: '',
-    },
-    {
-      id: 5,
-      name: 'test',
-      type: 'cardio',
-      muscle: 'legs',
-      equipment: 'none',
-      difficulty: 'beginner',
-      instructions: '',
-    },
-    {
-      id: 6,
-      name: 'test2',
-      type: 'cardio',
-      muscle: 'legs',
-      equipment: 'none',
-      difficulty: 'beginner',
-      instructions: '',
-    },
-  ]);
+const RoutineScreen = ({navigation, route}) => {
+  const [routineList, setRoutineList] = useState([]);
+
+  // Receive exercise from params and add it to the routineList
+  useEffect(() => {
+    if (route.params && route.params.exercise) {
+      setRoutineList(routineList => [...routineList, route.params.exercise]);
+    }
+  }, [route.params]);
 
   //Variables for checkboxes
-  const handleCheckboxChange = exerciseId => {
-    setIsSelected({...isSelected, [exerciseId]: !isSelected[exerciseId]});
+  const handleCheckboxChange = exerciseName => {
+    setIsSelected({...isSelected, [exerciseName]: !isSelected[exerciseName]});
   };
 
   //sets inital state of checkbox according to id
@@ -84,10 +33,13 @@ const RoutineScreen = ({navigation}) => {
 
   const [isSelected, setIsSelected] = useState(isSelectedInitialState);
 
-  const handleDeleteExercise = id => {
-    setRoutineList(prevList => prevList.filter(item => item.id !== id));
+  //deleting exercise from routine through name
+  const handleDeleteExercise = name => {
+    setRoutineList(prevList => prevList.filter(item => item.name !== name));
+    //setRoutineList(routineList.filter(exercise => exercise !== item));
   };
 
+  //drag and drop and showing exercise details
   const renderItem = ({item, drag, isActive}) => (
     <TouchableOpacity
       style={[styles.listItem, isActive ? styles.listItemActive : null]}
@@ -106,12 +58,12 @@ const RoutineScreen = ({navigation}) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.listItemButton}
-        onPress={() => handleDeleteExercise(item.id)}>
+        onPress={() => handleDeleteExercise(item.name)}>
         <Text style={styles.listItemButtonText}>Delete</Text>
       </TouchableOpacity>
       <CheckBox
-        value={isSelected[item.id]}
-        onValueChange={() => handleCheckboxChange(item.id)}
+        value={isSelected[item.name]}
+        onValueChange={() => handleCheckboxChange(item.name)}
         style={{height: 20, width: 20}}
         id={'checkbox_${item.id}'}
       />
@@ -135,7 +87,7 @@ const RoutineScreen = ({navigation}) => {
       <DraggableFlatList
         data={routineList}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.name}
         onDragEnd={({data}) => setRoutineList(data)}
       />
     </View>
