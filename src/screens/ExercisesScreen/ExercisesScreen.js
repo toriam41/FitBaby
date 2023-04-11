@@ -3,13 +3,12 @@
 import {View, Text, StyleSheet, FlatList, SectionList, Dimensions, Button} from 'react-native';
 import React from 'react';
 
-// array holding all categories
-
+// array holding all categories and their exercise cards
 const sections = [
   {
     title: 'Cardio',
     theme: "#FBC688", 
-    data: [
+    data: [   // exercise cards
     {
       key: '1',
       text: 'exercise 1',
@@ -113,7 +112,7 @@ const sections = [
 const ListItem = ({ item, theme }) => {
   return (
     <View style={[styles.item, {backgroundColor: theme}]}>  
-      <Text style={styles.itemText}>{item.text} </Text>
+      <Text style={styles.itemText}> {item.text} </Text>
     </View>
   );
 };
@@ -131,16 +130,17 @@ const ExercisesScreen = () => {
             <Text style={styles.sectionHeader}>{section.title}</Text>
             <FlatList
               data={section.data}
-              horizontal
               style={styles.container}
               renderItem={({ item }) => {
-                return <ListItem item={item} theme={section.theme}   />;
+                return <ListItem item={item} theme={section.theme} />
               }}
+              
             />
           </> 
         )}
         renderItem={({ item, section }) => {
-          return null
+          return null;
+          // return <ListItem item={item} />;
         }}
     />
     </>
