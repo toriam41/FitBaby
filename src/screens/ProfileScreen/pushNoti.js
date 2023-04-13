@@ -1,20 +1,28 @@
-import PushNotification from 'react-native-push-notification';
+import {View, Text, StyleSheet} from 'react-native';
+import React from 'react';
+import DateTimePicker from './DateTimePicker';
+import DaysOfWeekPicker from './DaysOfTheWeek';
 
-PushNotification.configure({
-  // Called when a remote or local notification is opened or received
-  onNotification: function (notification) {
-    console.log('NOTIFICATION:', notification);
-  },
-  // Called when the user taps on the notification
-  onAction: function (notification) {
-    console.log('ACTION:', notification.action);
-    console.log('NOTIFICATION:', notification);
-  },
-  // Android only: GCM or FCM sender ID
-  senderID: 'YOUR_SENDER_ID',
-  // Android only: Icon resource name
-  smallIcon: 'ic_notification',
-});
+const scheduledNoti = {
+    time: NOT_INITIALIZED_ERROR, 
+    date: NOT_INITIALIZED_ERROR
+}
 
-// Request permission to receive push notifications
-PushNotification.requestPermissions();
+const PushNoti = () => {
+return (
+    <View style={styles.container}>
+      <Text>ProfileScreen</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffe289',
+  }
+})
+
+export default PushNoti;
