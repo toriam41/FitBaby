@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffe289',
-  }
-})
+  },
+});
 
 export default ProfileScreen;

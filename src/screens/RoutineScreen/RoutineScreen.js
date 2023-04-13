@@ -65,7 +65,7 @@ const RoutineScreen = ({navigation, route}) => {
         value={isSelected[item.name]}
         onValueChange={() => handleCheckboxChange(item.name)}
         style={{height: 20, width: 20}}
-        id={'checkbox_${item.id}'}
+        id={`checkbox_${item.id}`}
       />
     </TouchableOpacity>
   );

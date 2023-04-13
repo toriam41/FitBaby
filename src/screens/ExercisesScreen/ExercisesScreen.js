@@ -59,10 +59,7 @@ const ExercisesScreen = ({navigation}) => {
             if (!isAdded) {
               setRoutineList(routineList => [...routineList, item]);
               navigation.navigate('Routine', {exercise: item});
-            } /*else {
-              setRoutineList(routineList.filter(exercise => exercise !== item));
-              console.log('Exercise already added');
-            }*/
+            }
           }}
           disabled={isAdded}
         />
