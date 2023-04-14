@@ -9,6 +9,7 @@ import ProfileScreen from '../src/screens/ProfileScreen';
 import FitBabyScreen from '../src/screens/FitBabyScreen';
 import ExercisesScreen from '../src/screens/ExercisesScreen';
 import RoutineScreen from '../src/screens/RoutineScreen';
+import PushNoti from '../src/screens/RoutineScreen/PushNoti';
 
 const Tab = createBottomTabNavigator();
 
@@ -195,6 +196,10 @@ const NavBar = () => {
                 </View>
               )
             }} />
+            <Tab.Screen
+            name="PushNoti"
+            component={PushNoti}
+            />
       </Tab.Navigator>
     </>
   )

@@ -4,7 +4,7 @@ import DateTimePicker from './DateTimePicker';
 import DaysOfWeekPicker from './DaysOfWeekPicker';
 import moment from 'moment';
 
-const PushNoti = () => {
+const PushNoti = ({navigation}) => {
   const [time, setTime] = useState(null);
   const [days, setDays] = useState(null);
   const [showTimePicker, setShowTimePicker] = useState(false);

@@ -40,6 +40,7 @@ const RoutineScreen = ({navigation, route}) => {
   };
 
   //drag and drop and showing exercise details
+  //deleted edit button
   const renderItem = ({item, drag, isActive}) => (
     <TouchableOpacity
       style={[styles.listItem, isActive ? styles.listItemActive : null]}
@@ -53,9 +54,6 @@ const RoutineScreen = ({navigation, route}) => {
       <View style={styles.listItemLeft}>
         <Text style={styles.listItemTitle}>{item.name}</Text>
       </View>
-      <TouchableOpacity style={styles.listItemButton}>
-        <Text style={styles.listItemButtonText}>Edit</Text>
-      </TouchableOpacity>
       <TouchableOpacity
         style={styles.listItemButton}
         onPress={() => handleDeleteExercise(item.name)}>
@@ -75,6 +73,14 @@ const RoutineScreen = ({navigation, route}) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>My Routine</Text>
+        <Button
+          title="Noti"
+          onPress={() => navigation.navigate('PushNoti')}
+          color="#648daf"
+          paddingHorizontal={5}
+          paddingVertical={5}
+          style={styles.addExerciseButton}
+        />
         <Button
           title="Add Exercise"
           onPress={() => navigation.navigate('Exercises')}
