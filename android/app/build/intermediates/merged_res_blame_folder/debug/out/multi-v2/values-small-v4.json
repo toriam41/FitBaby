@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.fitbaby.app-mergeDebugResources-34:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\brean\\.gradle\\caches\\transforms-3\\78b2726136a3e3ea857dd2f7d1da571b\\transformed\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",
