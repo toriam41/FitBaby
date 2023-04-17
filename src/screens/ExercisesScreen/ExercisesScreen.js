@@ -53,7 +53,7 @@ const ExercisesScreen = ({navigation}) => {
       title: 'Strength',
       type: "strength",
       key: '2',
-      theme:  "#FBC688",
+      theme: "#CCD5AE",
       data: fetchExerciseCards("strength")
       
     },
@@ -61,28 +61,28 @@ const ExercisesScreen = ({navigation}) => {
       title: 'Stretching',
       type: 'stretching',
       key: '3',
-      theme:  "#FBC688",
+      theme: "#86BBD8",
       data: fetchExerciseCards('stretching')
     },
     {
       title: "Olympic Weightlifting",
       type: 'olympic_weightlifting',
       key: '4',
-      theme:  "#FBC688",
+      theme: "#F6D36C",
       data: fetchExerciseCards('olympic_weightlifting')
     },
     {
       title: "Plyometrics",
       type: 'plyometrics',
       key: '5',
-      theme:  "#FBC688",
+      theme: "#85998A",
       data: fetchExerciseCards('plyometrics')
     },
     {
       title: 'Powerlifting',
       type: 'powerlifting',
       key: '6',
-      theme:  "#FBC688",
+      theme:  "#D4A373",
       data: fetchExerciseCards('powerlifting')
     },
     {
