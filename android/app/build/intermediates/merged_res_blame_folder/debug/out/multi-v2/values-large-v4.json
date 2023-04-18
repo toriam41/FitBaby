@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-large-v4/values-large-v4.xml",
+            "outputFile": "com.fitbaby.app-mergeDebugResources-34:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\brean\\.gradle\\caches\\transforms-3\\e265248686a553b1e56fda0cfbac4aec\\transformed\\appcompat-1.4.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\4c5e1b11bf963f4f4e7d413b345867d1\\transformed\\material-1.1.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\brean\\.gradle\\caches\\transforms-3\\78b2726136a3e3ea857dd2f7d1da571b\\transformed\\material-1.1.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
