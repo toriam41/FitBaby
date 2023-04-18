@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import DateTimePicker from './DateTimePicker';
 import DaysOfWeekPicker from './DaysOfWeekPicker';
 import moment from 'moment';
@@ -24,22 +24,28 @@ const PushNoti = ({navigation}) => {
     console.log('Selected Days:', days);
   };
 
+  const showMode = (currentMode) => {
+    setShowTimePicker(true);
+    setMode(currentMode);
+  };
+
   return (
     <View>
       <TouchableOpacity onPress={() => setShowTimePicker(true)}>
-        <Text>{time || 'Select Time'}</Text>
+        <Text style={styles.labels}>{time || 'Select Time'}</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setShowDaysPicker(true)}>
-        <Text>{days ? 'Days Selected' : 'Select Days'}</Text>
+        <Text style={styles.labels}>{days ? 'Days Selected' : 'Select Days'}</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleSave}>
-        <Text>Save</Text>
+        <Text style={styles.labels}>Save</Text>
       </TouchableOpacity>
       <DateTimePicker
         visible={showTimePicker}
         onClose={() => setShowTimePicker(false)}
         onDateChange={handleTimeChange}
       />
+      <Button title='Time Picker' onPress={() => showMode('time')}/>
       <DaysOfWeekPicker
         onDaysChange={handleDaysChange}
         visible={showDaysPicker}
@@ -48,5 +54,18 @@ const PushNoti = ({navigation}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    paddingVertical: 40,
+  },
+  labels: {
+    fontSize: 20,
+    marginLeft: 40,
+  },
+});
 
 export default PushNoti;
