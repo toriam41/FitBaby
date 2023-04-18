@@ -24,11 +24,6 @@ const PushNoti = ({navigation}) => {
     console.log('Selected Days:', days);
   };
 
-  const showMode = (currentMode) => {
-    setShowTimePicker(true);
-    setMode(currentMode);
-  };
-
   return (
     <View>
       <TouchableOpacity onPress={() => setShowTimePicker(true)}>
@@ -45,7 +40,6 @@ const PushNoti = ({navigation}) => {
         onClose={() => setShowTimePicker(false)}
         onDateChange={handleTimeChange}
       />
-      <Button title='Time Picker' onPress={() => showMode('time')}/>
       <DaysOfWeekPicker
         onDaysChange={handleDaysChange}
         visible={showDaysPicker}
