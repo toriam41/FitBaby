@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitbaby.app-mergeDebugResources-34:/values-v24/values-v24.xml",
+            "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\brean\\.gradle\\caches\\transforms-3\\e265248686a553b1e56fda0cfbac4aec\\transformed\\appcompat-1.4.1\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

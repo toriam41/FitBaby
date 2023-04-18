@@ -1,30 +1,23 @@
-import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, SectionList, Dimensions, Button} from 'react-native';
 import React, {useState} from 'react';
+
 import {handleDeleteExercise} from '../RoutineScreen/RoutineScreen';
 
-const ExercisesScreen = ({navigation}) => {
-  //exercise data from API
-  const [exerciseData, setExerciseData] = useState([]);
 
-  //exercise type from API
+const ExercisesScreen = ({navigation}) => {
+  // exercise type from API
   const [selectedType, setSelectedType] = useState('');
 
-  //exercises added to routine to check for duplicates
+  // exercises added to routine to check for duplicates
   const [routineList, setRoutineList] = useState([]);
 
-  //exercise types matching API types
-  const exerciseTypes = [
-    'cardio',
-    'strength',
-    'stretching',
-    'olympic_weightlifting',
-    'plyometrics',
-    'powerlifting',
-    'strongman',
-  ];
+  //fetching exercises from specific category data from API
+  const fetchExerciseCards = (category) => {
+    
+    // exercise data from API
+    const [exerciseData, setExerciseData] = useState([]);
 
-  //fetching exercise data from API
-  const fetchExerciseCards = type => {
+    // API call needs to handle load time but works
     const options = {
       method: 'GET',
       headers: {
@@ -32,86 +25,135 @@ const ExercisesScreen = ({navigation}) => {
         'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com',
       },
     };
-
-    const url = `https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?type=${type}`;
+    const url = `https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?type=${category}`;
 
     fetch(url, options)
       .then(response => response.json())
-      .then(data => setExerciseData(data))
+      .then((data) => setExerciseData(data))
       .catch(err => console.error(err));
+
+    const exercises = exerciseData.sort((a, b) => a.name.localeCompare(b.name));
+    return exercises;
   };
 
   //rendering exercise data, add to routine button navigates to routine and adds exercise
   //button checks if exercise has been added
-  const renderExercises = ({item}) => {
-    const isAdded = routineList.includes(item);
 
+
+  // each category listed in its own section
+  const sections = [
+    {
+      title: 'Cardio',
+      type: "cardio",
+      key: '1',
+      theme:  "#FBC688",
+      data: fetchExerciseCards("cardio")
+    },
+    {
+      title: 'Strength',
+      type: "strength",
+      key: '2',
+      theme: "#CCD5AE",
+      data: fetchExerciseCards("strength")
+      
+    },
+    {
+      title: 'Stretching',
+      type: 'stretching',
+      key: '3',
+      theme: "#86BBD8",
+      data: fetchExerciseCards('stretching')
+    },
+    {
+      title: "Olympic Weightlifting",
+      type: 'olympic_weightlifting',
+      key: '4',
+      theme: "#F6D36C",
+      data: fetchExerciseCards('olympic_weightlifting')
+    },
+    {
+      title: "Plyometrics",
+      type: 'plyometrics',
+      key: '5',
+      theme: "#85998A",
+      data: fetchExerciseCards('plyometrics')
+    },
+    {
+      title: 'Powerlifting',
+      type: 'powerlifting',
+      key: '6',
+      theme:  "#D4A373",
+      data: fetchExerciseCards('powerlifting')
+    },
+    {
+      title: 'Strongman',
+      type: 'strongman',
+      key: '7',
+      theme:  "#FBC688",
+      data: fetchExerciseCards('strongman')
+    }
+  ]
+
+  // displays each exercise card title
+  const ListItem = ({ item, theme }) => {
     return (
-      <View style={styles.exerciseData}>
-        <Text>Exercise: {item.name}</Text>
-        <Text>Type: {item.type}</Text>
-        <Text>Equipment: {item.equipment}</Text>
-        <Text>Difficulty: {item.difficulty}</Text>
-        <Text>Muscle: {item.muscle}</Text>
-        <Button
-          title={isAdded ? 'Added to Routine' : 'Add to Routine'}
-          onPress={() => {
-            if (!isAdded) {
-              setRoutineList(routineList => [...routineList, item]);
-              navigation.navigate('Routine', {exercise: item});
-            } /*else {
-              setRoutineList(routineList.filter(exercise => exercise !== item));
-              console.log('Exercise already added');
-            }*/
-          }}
-          disabled={isAdded}
-        />
-
-        <Text></Text>
-      </View>
-    );
-  };
-
-  //rendering exercise type buttons
-  const renderExerciseTypeButton = type => (
-    <Button
-      title={type}
-      onPress={() => {
-        setSelectedType(type);
-        fetchExerciseCards(type);
-      }}
-      disabled={selectedType === type}
-    />
-  );
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.buttonsContainer}>
-        {exerciseTypes.map(type => renderExerciseTypeButton(type))}
-      </View>
-      <FlatList data={exerciseData} renderItem={renderExercises} />
+      <View style={[styles.item, styles.container, {backgroundColor: theme}]}>
+      <Text style={styles.itemText}>{item.name}</Text>
     </View>
+    )
+  }
+ 
+  return (
+    <>
+      <Text>Discover</Text>
+      <SectionList
+        contentContainerStyle={{ paddingHorizontal: 10 }}
+        stickySectionHeadersEnabled={false}
+        sections={sections} // should return array of all categories as objects
+        renderSectionHeader={({ section }) => {
+          return(
+            <>
+              <Text style={styles.sectionHeader}>{section.title}</Text>  
+              <FlatList
+                data={section.data}
+                renderItem={({ item }) => {
+                  return (
+                    // need touchable opacity to click and display card info
+                    <ListItem item={item} theme={section.theme}/>
+                  )
+                }}
+                horizontal={true}
+              />
+            </>
+          )
+        }}
+        renderItem={({ item }) => {
+          return null;
+        }}
+      />
+   </>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 25,
+    marginBottom: 25, 
+  },
+  item: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#85998a',
+    flex: 1,
+    marginRight: 15,
+    height: 90,
+    width: 250,
+    borderRadius: 10,
+  },  
+  itemText: {
+    color: '#fff',
   },
-  buttonsContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-  },
-  exerciseData: {
-    backgroundColor: '#f2f2f2',
-    padding: 10,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-});
+})
 
 export default ExercisesScreen;
