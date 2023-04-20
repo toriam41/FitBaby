@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitbaby.app-mergeDebugResources-34:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "com.fitbaby.app-mergeDebugResources-35:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "C:\\Users\\brean\\.gradle\\caches\\transforms-3\\acb42a3af3fc9755cd1f83e2205ee0fd\\transformed\\core-1.7.0\\res\\values-en-rXC\\values-en-rXC.xml",

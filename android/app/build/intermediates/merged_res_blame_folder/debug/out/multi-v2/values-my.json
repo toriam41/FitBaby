@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitbaby.app-mergeDebugResources-34:/values-my/values-my.xml",
+            "outputFile": "com.fitbaby.app-mergeDebugResources-35:/values-my/values-my.xml",
             "map": [
                 {
                     "source": "C:\\Users\\brean\\.gradle\\caches\\transforms-3\\8c8fccc43f5793d190c5ea947c3e6d89\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-my\\values.xml",
