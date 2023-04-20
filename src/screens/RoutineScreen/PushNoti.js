@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import DateTimePicker from './DateTimePicker';
 import DaysOfWeekPicker from './DaysOfWeekPicker';
 import moment from 'moment';
+import PushNotification from 'react-native-push-notification';
 
 const PushNoti = ({navigation}) => {
   const [time, setTime] = useState(null);
@@ -45,9 +46,6 @@ const PushNoti = ({navigation}) => {
         visible={showDaysPicker}
         onClose={() => setShowDaysPicker(false)}
       />
-      <TouchableOpacity onPress={handleSave}>
-        <Text style={styles.labels}>Save</Text>
-      </TouchableOpacity>
     </View>
   );
 };
