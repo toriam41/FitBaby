@@ -70,6 +70,7 @@ const DaysOfWeekPicker = ({ onDaysChange }) => {
           label="Saturday"
           style={styles.checkbox}
         />
+
         <Text styles={styles.label}>Sat</Text>
       </View>
     </View>

@@ -45,6 +45,9 @@ const PushNoti = ({navigation}) => {
         visible={showDaysPicker}
         onClose={() => setShowDaysPicker(false)}
       />
+      <TouchableOpacity onPress={handleSave}>
+        <Text style={styles.labels}>Save</Text>
+      </TouchableOpacity>
     </View>
   );
 };
