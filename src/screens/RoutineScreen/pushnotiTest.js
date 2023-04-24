@@ -20,7 +20,7 @@ function GetFCMToken(){
             let fcmtoken = messenging().getToken();
             if(fcmtoken){
                 console.log(fcmtoken,"new token");
-                await AsyncStorage.setItem("fcmtoken",fcmtoken);
+                //await AsyncStorage.setItem("fcmtoken",fcmtoken);
             }
         }catch (error){
             console.log(error,"error in fcmtoken");
