@@ -1,33 +1,30 @@
-import React, {Component} from "react";
-import PushNotification from "react-native-push-notification";
-// var PushNotification = require("react-native-push-notification");
-export default class PushController extends Component{
-componentDidMount(){
-PushNotification.configure({
-// (optional) Called when Token is generated (iOS and Android)
-onRegister: function(token) {
-console.log("TOKEN:", token);
-},
-// (required) Called when a remote or local notification is opened or received
-onNotification: function(notification) {
-console.log("NOTIFICATION:", notification);
-// process the notification here
-// required on iOS only
-notification.finish(PushNotificationIOS.FetchResult.NoData);
-},
-// Android only
-senderID: "764310667268",
-// iOS only
-permissions: {
-alert: true,
-badge: true,
-sound: true
-},
-popInitialNotification: true,
-requestPermissions: true
-});
+import { async } from '@firebase/util';
+import messenging from 'react-native-firebase/messenging';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { auth } from '../../../firebase-config';
+
+async function requestUserPermission() {
+    const authStatus = await messenging().requestUserPermission();
+    const enabled =
+        authStatus === messenging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messenging.AuthorizationStatus.PROVISIONAL;
+    if (enabled){
+        console.log('Authorization status:', authStatus);
+    }
 }
-render(){
-return null;
-}
+
+function GetFCMToken(){
+    let fcmtoken = AsyncStorage.getItem("fcmtoken");
+    if(!fcmtoken){
+        try{
+            let fcmtoken = messenging().getToken();
+            if(fcmtoken){
+                console.log(fcmtoken,"new token");
+                await AsyncStorage.setItem("fcmtoken",fcmtoken);
+            }
+        }catch (error){
+            console.log(error,"error in fcmtoken");
+        }
+
+    }
 }
