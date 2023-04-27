@@ -1,65 +1,109 @@
-import React, { useState, Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
-import DateTimePicker from './DateTimePicker';
-import DaysOfWeekPicker from './DaysOfWeekPicker';
-import moment from 'moment';
-import PushNotification from 'react-native-push-notification';
+import React, { Fragment } from 'react';
+import PushController from './PushController';
+import { SafeAreaView, StyleSheet, View, Text, StatusBar, FlatList } from 'react-native';
+import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
+import { ScrollView } from 'react-native-gesture-handler';
+
+// Dummy data for list, we'll replace this with data received from push
+let pushData = [
+  {
+    title: "First push",
+    message: "First push message"
+  },
+  {
+    title: "Second push",
+    message: "Second push message"
+  }
+];
+
+_renderItem = ({ item }) => (
+  <View key={item.title}>
+    <Text style={styles.title}>{item.title}</Text>
+    <Text style={styles.message}>{item.message}</Text>
+  </View>
+);
 
 const PushNoti = ({navigation}) => {
-  const [time, setTime] = useState(null);
-  const [days, setDays] = useState(null);
-  const [showTimePicker, setShowTimePicker] = useState(false);
-  const [showDaysPicker, setShowDaysPicker] = useState(false);
-
-  const handleTimeChange = (date) => {
-    setTime(moment(date).format('HH:mm'));
-  };
-
-  const handleDaysChange = (updatedDays) => {
-    setDays(updatedDays);
-  };
-
-  const handleSave = () => {
-    // Save the selected time and days here
-    console.log('Selected Time:', time);
-    console.log('Selected Days:', days);
-  };
-
   return (
-    <View>
-      <TouchableOpacity onPress={() => setShowTimePicker(true)}>
-        <Text style={styles.labels}>{time || 'Select Time'}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => setShowDaysPicker(true)}>
-        <Text style={styles.labels}>{days ? 'Days Selected' : 'Select Days'}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSave}>
-        <Text style={styles.labels}>Save</Text>
-      </TouchableOpacity>
-      <DateTimePicker
-        visible={showTimePicker}
-        onClose={() => setShowTimePicker(false)}
-        onDateChange={handleTimeChange}
-      />
-      <DaysOfWeekPicker
-        onDaysChange={handleDaysChange}
-        visible={showDaysPicker}
-        onClose={() => setShowDaysPicker(false)}
-      />
-    </View>
+    <Fragment>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
+        < Header/> 
+        <View style={styles.listHeader}>
+          <Text>Push Notifications</Text>
+        </View>
+        <View style={styles.body}>
+        <FlatList
+          data={pushData}
+          renderItem={(item ) => this._renderItem(item)}
+          keyExtractor={(item ) => item.title}
+        />
+        </View>
+      </SafeAreaView>
+      <PushController />
+    </Fragment>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 20,
-    paddingVertical: 40,
+  scrollView: {
+    backgroundColor: Colors.lighter,
+    flexGrow: 1
   },
-  labels: {
-    fontSize: 20,
-    marginLeft: 40,
+  listHeader: {
+    backgroundColor: '#eee',
+    color: "#222",
+    height: 44,
+    padding: 12
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingTop: 10
+  },
+  message: {
+    fontSize: 14,
+    paddingBottom: 15,
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1
+  },
+  engine: {
+    position: 'absolute',
+    right: 0
+  },
+  body: {
+    backgroundColor: Colors.white,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    flex: 1
+  },
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.dark
+  },
+  highlight: {
+    fontWeight: '700'
+  },
+  footer: {
+    color: Colors.dark,
+    fontSize: 12,
+    fontWeight: '600',
+    padding: 4,
+    paddingRight: 12,
+    textAlign: 'right',
   },
 });
 
