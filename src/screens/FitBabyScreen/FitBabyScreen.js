@@ -1,26 +1,80 @@
 import {View, Text, StyleSheet, Button, Alert} from 'react-native';
 import React, {useState, useEffect} from 'react';
+import {collection, addDoc, getDocs} from 'firebase/firestore';
+import {db, auth} from '../../../firebase-config';
 
 const FitBabyScreen = () => {
-  const [checkInCount, setCheckInCount] = useState(0);
-  const [achievements, setAchievements] = useState([
-    {
-      id: 1,
-      name: 'First Steps!',
-      description: 'Your baby took their first steps to the gym!',
-      criteria: "Log your baby's first workout in the app's activity tracker.",
-      earned: false,
-    },
-    {
-      id: 2,
-      name: "Baby's Growing Up!",
-      description: 'Your baby spent 30 minutes on their tummy!',
-      criteria: "Log your baby's workouts in the app at least 10 times",
-      earned: false,
-    },
-    // add more achievements here
-  ]);
+  const [userEmail, setUserEmail] = useState('');
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setUserEmail(user.email);
+      } else {
+        setUserEmail('');
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+  // counting how many times the user checks in on the app
+  const [checkInCount, setCheckInCount] = useState(0);
+
+  // list of achievements that are available to the user to earn
+  const [achievements, setAchievements] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  //function to add achievements to the database MAY NOT NEED
+  function addAchievement(name, description, criteria) {
+    try {
+      const achievementsRef = addDoc(collection(db, 'achievements'), {
+        name: name,
+        description: description,
+        criteria: criteria,
+        earned: false,
+      });
+      console.log('Achievement added with ID: ', achievementsRef.id);
+    } catch (e) {
+      console.error('Error adding achievement: ', e);
+    }
+  }
+
+  // function to add achievements to the database MAY NOT NEED
+  function handleAddAchievement() {
+    addAchievement('First Steps!', 'Log your first workout', '1 check-in');
+    addAchievement("Baby's Growing Up!", 'Log 10 workouts', '10 check-ins');
+    addAchievement('Testing Achievement', 'Test', 'Test');
+  }
+
+  // function to fetch achievements from the database
+  async function fetchAchievements() {
+    try {
+      // Get a list of all achievements
+      const achievementsRef = collection(db, 'achievements');
+      const querySnapshot = await getDocs(achievementsRef);
+      // Map the list of achievements to an array "achievementsList"
+      const achievementsList = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        name: doc.data().name,
+        earned: false,
+        description: doc.data().description,
+        criteria: doc.data().criteria,
+      }));
+      // Set the achievements state to achievementsList
+      setAchievements(achievementsList);
+      setLoading(false);
+    } catch (error) {
+      console.log('Error getting achievements:', error);
+      setLoading(false);
+    }
+  }
+
+  // Fetch achievements when the component mounts only once
+  useEffect(() => {
+    fetchAchievements();
+  }, []);
+
+  // function to check if the user has earned any achievements
   function checkAchievements() {
     // Loop through each achievement
     for (let i = 0; i < achievements.length; i++) {
@@ -47,9 +101,11 @@ const FitBabyScreen = () => {
         );
       }
     }
+    // Update the achievements state (earned)
     setAchievements(achievements);
   }
 
+  //every time the checkInCount state changes, check if the user has earned any achievements
   useEffect(() => {
     checkAchievements();
   }, [checkInCount]);
@@ -58,16 +114,12 @@ const FitBabyScreen = () => {
     setCheckInCount(checkInCount + 1);
   }
 
-  function resetCheckIn() {
-    setCheckInCount(0);
-  }
-
   return (
     <View style={styles.container}>
       <Text>FitBabyScreen</Text>
       <Text>Check-ins: {checkInCount}</Text>
       <Button title="Log Workout" onPress={handleCheckIn} />
-      <Button title="Reset" onPress={resetCheckIn} />
+      <Button title="Add Achievements" onPress={handleAddAchievement} />
       {achievements.map(achievement => (
         <View key={achievement.id}>
           <Text>{achievement.name}</Text>

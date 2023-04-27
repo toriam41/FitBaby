@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitbaby.app-mergeDebugResources-33:/values-land/values-land.xml",
+            "outputFile": "com.fitbaby.app-mergeDebugResources-34:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\6c2bf8efa41ca69d6c96c3b6d859f53c\\transformed\\appcompat-1.4.1\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\23ccb3179e1aa6cb99336697cc8099e2\\transformed\\appcompat-1.4.1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\4c5e1b11bf963f4f4e7d413b345867d1\\transformed\\material-1.1.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\BenjaminNguyen\\.gradle\\caches\\transforms-3\\089e4fcf3172187d7ae460886ee691b3\\transformed\\material-1.1.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

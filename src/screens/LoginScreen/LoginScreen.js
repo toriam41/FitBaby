@@ -45,7 +45,7 @@ const LoginScreen = () => {
           console.log('Logged in with user email', user.email, user.password);
           console.warn('Login Successful!');
           // TODO: navigate to the home screen
-          navigation.navigate({HomeScreen});
+          navigation.navigate('HomeScreen');
         })
         .catch(error => console.log(error.message));
     } else {

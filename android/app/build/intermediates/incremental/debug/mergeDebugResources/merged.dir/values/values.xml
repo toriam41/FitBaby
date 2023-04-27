@@ -772,6 +772,7 @@
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
+    <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="firebase_database_url" translatable="false">https://fitbaby-fc5eb-default-rtdb.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">764310667268</string>
     <string name="google_api_key" translatable="false">AIzaSyDrpOagsUMDMwTZpcRCDcM22bLlClsb9Ns</string>
@@ -3064,11 +3065,19 @@
     <style name="ShapeAppearanceOverlay.TopRightDifferentCornerSize">
     <item name="cornerSizeTopRight">20px</item>
   </style>
-    <style name="SpinnerDatePickerDialog" ns2:targetApi="lollipop" parent="Theme.AppCompat.Light.Dialog">
+    <style name="SpinnerDatePickerDialog" parent="SpinnerDatePickerDialogBase"/>
+    <style name="SpinnerDatePickerDialogBase" ns2:targetApi="lollipop" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="android:datePickerStyle">@style/SpinnerDatePickerStyle</item>
     </style>
-    <style name="SpinnerDatePickerStyle" ns2:targetApi="lollipop" parent="android:Widget.Material.Light.DatePicker">
+    <style name="SpinnerDatePickerStyle" ns2:targetApi="lollipop" parent="android:Widget.Material.DatePicker">
         <item name="android:datePickerMode">spinner</item>
+    </style>
+    <style name="SpinnerTimePickerDialog" parent="SpinnerTimePickerDialogBase"/>
+    <style name="SpinnerTimePickerDialogBase" ns2:targetApi="lollipop" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:timePickerStyle">@style/SpinnerTimePickerStyle</item>
+    </style>
+    <style name="SpinnerTimePickerStyle" ns2:targetApi="lollipop" parent="android:Widget.Material.TimePicker">
+        <item name="android:timePickerMode">spinner</item>
     </style>
     <style name="Test.ShapeAppearanceOverlay.MaterialComponents.MaterialCalendar.Day" parent="">
     <item name="cornerFamily">rounded</item>
