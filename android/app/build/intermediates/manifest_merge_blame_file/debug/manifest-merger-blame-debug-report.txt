@@ -87,7 +87,7 @@
 39-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\brean\.gradle\caches\transforms-3\0e175bc100d5fe461156607a8b4053f4\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:22-86
 40
 41    <application
-41-->C:\Users\brean\OneDrive\Desktop\FitBaby\android\app\src\main\AndroidManifest.xml:6:5-48:19
+41-->C:\Users\brean\OneDrive\Desktop\FitBaby\android\app\src\main\AndroidManifest.xml:6:5-51:19
 42        android:name="com.fitbaby.MainApplication"
 42-->C:\Users\brean\OneDrive\Desktop\FitBaby\android\app\src\main\AndroidManifest.xml:7:7-38
 43        android:allowBackup="false"
