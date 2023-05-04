@@ -1,0 +1,86 @@
+import React from 'react';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {auth} from '../../../firebase-config';
+
+
+const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to the component
+  //signout function
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        navigation.replace('Login');
+      })
+      .catch(error => console.log(error.message));
+    console.log('User signed out!');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Home Screen</Text>
+      <View>
+        <Button
+          title="Logout"
+          onPress={() => handleSignOut()}
+          position="absolute"
+          bottom="0"
+          left="0"
+        />
+      </View>
+    </View>
+  );
+};
+
+
+[
+  {
+    "id": 5577006791947779000,
+    "title": "Eat foods rich in vitamin C every day",
+    "text": "An adequate intake of such foods may help protect against cancer and possibly other diseases. Besides oranges, the best sources of vitamin C are, in alphabetical order, asparagus, blackberries, broccoli, cabbage, cantaloupe, cauliflower, grapefruit, kale, kiwifruit, mangoes, mustard greens, peppers, raspberries, strawberries, tangerines, and tomatoes."
+  },
+  {
+    "id": 410,
+    "title": "Select foods rich in carotenoids, notably beta­carotene. ",
+    "text": "Research shows that these substances may play a role in preventing disease. Their orange color tells you that carrots, sweet potatoes, and cantaloupe are excellent sources of beta­carotene. But so are many dark leafy greens, such as collard greens, kale, and spinach, as well as broccoli."
+  },
+  {
+    "id": 6842348953158377000,
+    "title": "Be a semi­vegetarian. ",
+    "text": "That’s someone who supplements a steady diet of vegetables, whole grains, legumes, fruit, and dairy products with occasional moderate servings of beef, poultry, and fish. The potential benefits are many: a lowered risk for heart disease, cancer, and diabetes, the maintenance of a healthy weight, and fewer digestive complaints."
+  },
+  {
+    "id": 5577006791947779000,
+    "title": "Eat tomatoes and tomato products. ",
+    "text": "One four­ ounce tomato supplies about one­third of your daily need of vitamin C, plus a little beta­carotene, potassium, folate and other B vitamins, iron, and fiber. Tomatoes are also rich in a carotenoid called lycopene, a potent antioxidant. The lycopene in cooked and processed tomatoes (sauce, paste, salsa, canned tomatoes) is more easily absorbed than that in raw tomatoes. Watermelon and pink grapefruit also contain lycopene."
+  },
+  {
+    "id": 5577006791947779000,
+    "title": "Choose skinless turkey breast",
+    "text": "it’s just about the leanest of all meats. A three­ounce portion has less than a gram of fat and 120 calories. Plain roast turkey is your best bet: turkey cold cuts and self­basting turkeys can be quite high in fat."
+  }
+]
+
+
+
+
+const styles = StyleSheet.create({
+  //styling the home screen
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 20,
+  },
+});
+
+export default HomeScreen;

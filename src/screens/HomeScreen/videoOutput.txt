@@ -1,0 +1,26 @@
+ BUNDLE  ./index.js 
+
+// start app
+ LOG  Running "FitBaby" with {"rootTag":11}
+
+ // clicking on discover tab logs all exercise objects
+ LOG  cardio created!
+ LOG  {"title":"Cardio","key":1,"theme":"#FBC688"}
+ LOG  strength created!
+ LOG  {"title":"Strength","key":2,"theme":"#CCD5AE"}
+ LOG  stretching created!
+ LOG  {"title":"Stretching","key":3,"theme":"#86BBD8"}
+ LOG  olympic_weightlifting created!
+ LOG  {"title":"Olympic Weightlifting","key":4,"theme":"#F6D36C"}
+ LOG  plyometrics created!
+ LOG  {"title":"Plyometrics","key":5,"theme":"#85998A"}
+ LOG  powerlifting created!
+ LOG  {"title":"Powerlifting","key":6,"theme":"#D4A373"}
+ LOG  strongman created!
+ LOG  {"title":"Strongman","key":7,"theme":"#FBC688"}
+
+ // print array of all exercise objects
+ LOG  [{"title":"Cardio","key":1,"theme":"#FBC688"},{"title":"Strength","key":2,"theme":"#CCD5AE"},{"title":"Stretching","key":3,"theme":"#86BBD8"},{"title":"Olympic Weightlifting","key":4,"theme":"#F6D36C"},{"title":"Plyometrics","key":5,"theme":"#85998A"},{"title":"Powerlifting","key":6,"theme":"#D4A373"},{"title":"Strongman","key":7,"theme":"#FBC688"}]
+ 
+ // navigate back to home screeen successfully and sign out successfully
+ LOG  User signed out!
