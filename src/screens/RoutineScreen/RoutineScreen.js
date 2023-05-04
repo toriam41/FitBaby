@@ -74,14 +74,14 @@ const RoutineScreen = ({navigation, route}) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>My Routine</Text>
-        <Button
+        {/*<Button
           title="Noti"
           onPress={() => navigation.navigate('PushNoti')}
           color="#648daf"
           paddingHorizontal={5}
           paddingVertical={5}
           style={styles.addExerciseButton}
-        />
+          />*/}
         <Button
           title="Add Exercise"
           onPress={() => navigation.navigate('Exercises')}

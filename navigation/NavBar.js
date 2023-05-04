@@ -196,10 +196,10 @@ const NavBar = () => {
                 </View>
               )
             }} />
-            <Tab.Screen
+            {/*<Tab.Screen
             name="PushNoti"
             component={PushNoti}
-            />
+          />*/}
       </Tab.Navigator>
     </>
   )
