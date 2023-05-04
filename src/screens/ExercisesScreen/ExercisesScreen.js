@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
 import React, {useState} from 'react';
 import {handleDeleteExercise} from '../RoutineScreen/RoutineScreen';
+import {Alert} from 'react-native';
 
 const ExercisesScreen = ({navigation}) => {
   //exercise data from API
@@ -51,7 +52,7 @@ const ExercisesScreen = ({navigation}) => {
         <Text>Exercise: {item.name}</Text>
         <Text>Type: {item.type}</Text>
         <Text>Equipment: {item.equipment}</Text>
-        <Text>Difficulty: {item.difficulty}</Text>
+        <Text>Difficulty: {item.difficulty}</Text>.
         <Text>Muscle: {item.muscle}</Text>
         <Button
           title={isAdded ? 'Added to Routine' : 'Add to Routine'}
@@ -59,14 +60,12 @@ const ExercisesScreen = ({navigation}) => {
             if (!isAdded) {
               setRoutineList(routineList => [...routineList, item]);
               navigation.navigate('Routine', {exercise: item});
-            } /*else {
+            } else {
               setRoutineList(routineList.filter(exercise => exercise !== item));
-              console.log('Exercise already added');
-            }*/
+              Alert.alert('Exercise already added');
+            }
           }}
-          disabled={isAdded}
         />
-
         <Text></Text>
       </View>
     );
