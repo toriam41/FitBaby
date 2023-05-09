@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
+//supposed to display user info
 const ProfileScreen = () => {
   return (
     <View style={styles.container}>
