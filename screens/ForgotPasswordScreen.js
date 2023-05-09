@@ -5,6 +5,7 @@ import {auth} from '../firebase-config';
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState('');
 
+  // allows user to reset password
   const resetPassword = async function (email) {
     //const emailValue = email;
     try {
@@ -22,6 +23,7 @@ const ForgotPasswordScreen = () => {
         });*/
   };
   return (
+    // Takes user email to send reset password email
     <View>
       <TextInput
         value={email}
