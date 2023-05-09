@@ -12,6 +12,7 @@ import RoutineScreen from '../src/screens/RoutineScreen';
 
 const Tab = createBottomTabNavigator();
 
+// Nagivation buttons at bottom of screen
 const CustomTabButton = ({children, onPress}) => (
   <TouchableOpacity 
     onPress={onPress}
