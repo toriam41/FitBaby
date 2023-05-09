@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
-// soppose to host baby avatar
+// suppose to host baby avatar
 const FitBabyScreen = () => {
   return (
     <View style={styles.container}>
