@@ -14,7 +14,8 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
       .catch(error => console.log(error.message));
     console.log('User signed out!');
   };
-
+  
+  //log out button
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen</Text>
