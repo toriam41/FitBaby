@@ -39,6 +39,8 @@ const CustomTabButton = ({children, onPress}) => (
 
 )
 
+// styling buttons
+// linking screens to buttons
 const NavBar = () => {
   return (
     <>
