@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Button, StyleSheet, Image} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
+// first screens that user sees when first open app
 const OnboardingScreen = ({navigation}) => {
   return (
     <Onboarding
@@ -45,6 +46,7 @@ const OnboardingScreen = ({navigation}) => {
 
 export default OnboardingScreen;
 
+//UI for screens
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
