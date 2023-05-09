@@ -6,6 +6,7 @@ import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {ScrollView} from 'react-native';
 
+// sets user login info
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -20,6 +21,7 @@ const LoginScreen = ({navigation}) => {
     handleSignUp();
   };
 
+  // checks user's login info
   const handleLogin = () => {
     if (email && password) {
       auth
@@ -50,6 +52,7 @@ const LoginScreen = ({navigation}) => {
     navigation.navigate('Login');
   };
 
+  // UI for login screen and takes user input
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -110,6 +113,7 @@ const LoginScreen = ({navigation}) => {
 
 export default LoginScreen;
 
+// more UI for login
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
