@@ -4,14 +4,21 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  ScrollView,
   Button,
   Alert,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import firestore from '@react-native-firebase/firestore';
+import {BarChart} from 'react-native-chart-kit';
+import Pie from 'react-native-pie';
+import {auth} from '../../../firebase-config';
 
 const RoutineScreen = ({navigation, route}) => {
   const [routineList, setRoutineList] = useState([]);
+
+  const [exerciseTypeData, setExerciseTypeData] = useState([]);
 
   // Receive exercise from params and add it to the routineList
   useEffect(() => {
@@ -19,6 +26,33 @@ const RoutineScreen = ({navigation, route}) => {
       setRoutineList(routineList => [...routineList, route.params.exercise]);
     }
   }, [route.params]);
+
+  // Get the exercise types from the routineList and create a breakdown
+  useEffect(() => {
+    const exerciseTypes = {};
+    routineList.forEach(exercise => {
+      if (exercise.type in exerciseTypes) {
+        exerciseTypes[exercise.type].count += 1;
+      } else {
+        exerciseTypes[exercise.type] = {
+          count: 1,
+          category: exercise.category, // add category to exerciseTypes object
+        };
+      }
+    });
+    const data = [];
+    let totalCount = 0;
+    for (const [type, {count, category}] of Object.entries(exerciseTypes)) {
+      data.push({name: type, count, category});
+      totalCount += count;
+    }
+    for (const item of data) {
+      item.percentage = (item.count / totalCount) * 100;
+      item.color = '#' + Math.floor(Math.random() * 16777215).toString(16); // generate random color
+    }
+    console.log(data);
+    setExerciseTypeData(data);
+  }, [routineList]);
 
   //Variables for checkboxes
   const handleCheckboxChange = exerciseName => {
@@ -33,9 +67,33 @@ const RoutineScreen = ({navigation, route}) => {
 
   const [isSelected, setIsSelected] = useState(isSelectedInitialState);
 
+  const deleteExerciseFromFirestore = exercise => {
+    const {setIsAdded} = route.params ?? {};
+    // Get a reference to the Firestore database
+
+    console.log('Deleting exercise with ID: ', exercise);
+    // Delete the exercise document from Firestore
+    firestore()
+      .collection('users')
+      .doc(auth.currentUser)
+      .collection('routines')
+      .doc('routine')
+      .collection('exercises')
+      .doc(exercise)
+      .delete()
+      .then(() => {
+        setIsAdded(false);
+        console.log('Exercise deleted successfully!');
+      })
+      .catch(error => {
+        console.error('Error deleting exercise:', error);
+      });
+  };
+
   //deleting exercise from routine through name
   const handleDeleteExercise = name => {
     setRoutineList(prevList => prevList.filter(item => item.name !== name));
+    deleteExerciseFromFirestore(name);
     //setRoutineList(routineList.filter(exercise => exercise !== item));
   };
 
@@ -65,7 +123,7 @@ const RoutineScreen = ({navigation, route}) => {
         value={isSelected[item.name]}
         onValueChange={() => handleCheckboxChange(item.name)}
         style={{height: 20, width: 20}}
-        id={'checkbox_${item.id}'}
+        id={`checkbox_${item.id}`}
       />
     </TouchableOpacity>
   );
@@ -90,6 +148,19 @@ const RoutineScreen = ({navigation, route}) => {
         keyExtractor={item => item.name}
         onDragEnd={({data}) => setRoutineList(data)}
       />
+      {exerciseTypeData.length > 0 && (
+        <View style={{marginTop: 20}}>
+          <Pie
+            radius={100}
+            sections={exerciseTypeData.map(data => ({
+              percentage: data.percentage,
+              color: data.color,
+              title: data.category,
+            }))}
+            strokeCap={'butt'}
+          />
+        </View>
+      )}
     </View>
   );
 };

@@ -14,7 +14,6 @@ const SignupScreen = ({navigation}) => {
 
   //navigation
   // const navigation = useNavigation();
-  
 
   //check if user is logged in
   useEffect(() => {
@@ -33,19 +32,17 @@ const SignupScreen = ({navigation}) => {
   //sign up function
   const handleSignUp = () => {
     if (email === null || password === null || confirmPassword === null) {
-      alert("Please fill in all fields and try again.")
-    }
-    else if ((password && confirmPassword) && password === confirmPassword) {
+      alert('Please fill in all fields and try again.');
+    } else if (password && confirmPassword && password === confirmPassword) {
       auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('Created user with email', user.email, user.password);
-      })
-      .catch(error => console.warn(error.message));
-    }
-    else {
-      alert("Passwords do not match. Please try again!");
+        .createUserWithEmailAndPassword(email, password)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          console.log('Created user with email', user.email, user.password);
+        })
+        .catch(error => console.warn(error.message));
+    } else {
+      alert('Passwords do not match. Please try again!');
     }
   };
 
@@ -53,7 +50,6 @@ const SignupScreen = ({navigation}) => {
   const onForgotPasswordPressed = () => {
     console.warn('Forgot Password Pressed');
   };
-  
 
   return (
     <View style={styles.container}>

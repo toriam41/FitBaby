@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] C:\Users\Benja
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\4b207f29079e3eae8721d23b326f28ba\transformed\jetified-flipper-fresco-plugin-0.125.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\32e15e3c42606fd384da3acdee3b32b0\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:8:1-18:12
 MERGED from [:react-native-async-storage_async-storage] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_art] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\art\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_checkbox] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\checkbox\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_datetimepicker] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\datetimepicker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-community_masked-view] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\masked-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -19,6 +20,7 @@ MERGED from [:react-native-gesture-handler] C:\Users\BenjaminNguyen\Fitbaby\node
 MERGED from [:react-native-push-notification] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-push-notification\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-safe-area-context] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-svg] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-android:0.71.2] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\bb6cb9299c66dfd3254e439d6e11bf1b\transformed\jetified-react-android-0.71.2-debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\a079768aa50fba3aae9e2841640fa1ff\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -279,6 +281,8 @@ MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\BenjaminNguyen\.grad
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\32e15e3c42606fd384da3acdee3b32b0\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-async-storage_async-storage] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_art] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\art\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_art] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\art\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_checkbox] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\checkbox\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_checkbox] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\checkbox\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_datetimepicker] C:\Users\BenjaminNguyen\Fitbaby\node_modules\@react-native-community\datetimepicker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -299,6 +303,8 @@ MERGED from [:react-native-safe-area-context] C:\Users\BenjaminNguyen\Fitbaby\no
 MERGED from [:react-native-safe-area-context] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] C:\Users\BenjaminNguyen\Fitbaby\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-android:0.71.2] C:\Users\BenjaminNguyen\.gradle\caches\transforms-3\bb6cb9299c66dfd3254e439d6e11bf1b\transformed\jetified-react-android-0.71.2-debug\AndroidManifest.xml:5:5-7:41
