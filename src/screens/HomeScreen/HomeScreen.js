@@ -97,7 +97,7 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
         <Text style={{color:"black", }}>Tips of the Day</Text>
         
         <View style={{flexDirection:"row", marginTop: 10, marginBottom: 0,}}>
-          <Pressable onPress={() => {Alert.alert("Lorem Ipsum")}} style={{height:"80%", width: "45%", borderRadius: 20, backgroundColor:"#eec958", margin: 10, justifyContent:"center", alignItems:"center", elevation: 5, }}>
+          <Pressable onPress={() => {Alert.alert("Drinking water is essential to staying hydrated!")}} style={{height:"80%", width: "45%", borderRadius: 20, backgroundColor:"#eec958", margin: 10, justifyContent:"center", alignItems:"center", elevation: 5, }}>
             <Text style={{color:"#fff", }}>Drink a glass{'\n'}of water</Text>
             <View style={{flexDirection: "row", position: "absolute", bottom: 20, left: 20}} >
               <Text style={{color:"#fff", }}>Read more</Text>
@@ -105,7 +105,7 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
             </View>
           </Pressable>
 
-          <Pressable onPress={() => {Alert.alert("Lorem Ipsum")}} style={{height:"80%", width: "45%", borderRadius: 20, backgroundColor:"#98C6FC", margin: 10, justifyContent:"center", alignItems:"center", elevation: 5, shadowColor:"black"}}>
+          <Pressable onPress={() => {Alert.alert("Stretching is key for muscle development and injury prevention!")}} style={{height:"80%", width: "45%", borderRadius: 20, backgroundColor:"#98C6FC", margin: 10, justifyContent:"center", alignItems:"center", elevation: 5, shadowColor:"black"}}>
             <Text style={{color:"#fff", }}>Stretch often to{'\n'}keep limbs loose </Text>
             <View style={{flexDirection: "row", position: "absolute", bottom: 20, left: 20}} >
               <Text style={{color:"#fff", }}>Read more</Text>
