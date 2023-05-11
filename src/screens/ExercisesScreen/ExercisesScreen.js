@@ -67,7 +67,7 @@ const ListItem = ({ item, theme, routineState, navigation }) => {
 
     return (
       <>
-        <Pressable style={[styles.item, styles.container, {backgroundColor: theme}]}  onPress={handlePress}>
+        <Pressable style={[styles.item, styles.container, {backgroundColor: theme, elevation: 5,}]}  onPress={handlePress}>
           <View style={{top: 0, left: 0, }}>
             <Text style={styles.itemText}>{item.name}</Text>
           </View>
@@ -223,13 +223,12 @@ const ExercisesScreen = ({navigation}) => { // COMPONENT
   return (
     <>
       <View style={{
-        backgroundColor: "#E9EDC9",
+        backgroundColor: "#fefae0",
         height: "100%",
         width: "100%",
         // alignItems: "center",
         justifyContent: "center",
       }}>
-        <Text style={{color: "black", marginLeft: 30, top:-30}}>Discover</Text> 
         <View style={{
           backgroundColor: "white",
           height: "80%", 
@@ -239,13 +238,16 @@ const ExercisesScreen = ({navigation}) => { // COMPONENT
           paddingLeft: 20,
           alignSelf:"center",
         }}>
-          <SectionList
-            stickySectionHeadersEnabled={false}
-            sections={categories} 
-            renderSectionHeader={renderCategoryHeader}
-            renderItem={() =>{return null}}  
-          />
-        </View>
+          <Text style={{color: "black", marginTop: 15, marginBottom: 15,}}>Discover</Text> 
+          <View>
+          </View>
+            <SectionList
+              stickySectionHeadersEnabled={false}
+              sections={categories} 
+              renderSectionHeader={renderCategoryHeader}
+              renderItem={() =>{return null}}  
+            />   
+          </View>
       </View>
       
       
