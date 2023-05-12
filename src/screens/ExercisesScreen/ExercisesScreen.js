@@ -15,7 +15,6 @@ import React, {useState, useEffect} from 'react';
 import {handleDeleteExercise} from '../RoutineScreen/RoutineScreen';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {color} from 'react-native-reanimated';
-import firestore from '@react-native-firebase/firestore';
 import {auth, db} from '../../../firebase-config';
 import {addDoc, collection, updateDoc, doc} from 'firebase/firestore';
 

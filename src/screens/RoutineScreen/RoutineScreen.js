@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import firestore from '@react-native-firebase/firestore';
+//import firestore from '@react-native-firebase/firestore';
 import {BarChart} from 'react-native-chart-kit';
 import Pie from 'react-native-pie';
 import {auth} from '../../../firebase-config';
