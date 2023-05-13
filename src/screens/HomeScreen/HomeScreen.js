@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, Button, Modal, Pressable, Image, Alert} from 'react-native';
+import {View, Text, StyleSheet, Modal, Pressable, Image, Alert} from 'react-native';
 import {auth} from '../../../firebase-config';
 import Icon from "react-native-vector-icons/AntDesign";
 import Menu from "react-native-vector-icons/Feather";
 import Exit from "react-native-vector-icons/Feather";
 
-const formatDate = (date) => {
-  const options = { weekday: 'long',  month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
-};
-
 
 const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to the component
+  // display date in proper format
+  const formatDate = (date) => {
+    const options = { weekday: 'long',  month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  };
+
   //signout function
   const handleSignOut = () => {
     auth
@@ -23,13 +24,18 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
     console.log('User signed out!');
   };
 
+  // daily date variable
   const currentDate = new Date();
   const formattedDate = formatDate(currentDate);
-  const [showMenu, setShowMenu] = useState(false);
 
+  // menu state variable to toggle menu
+  const [showMenu, setShowMenu] = useState(false);
+  
   const triggerMenu = () => {
     setShowMenu(true)
   }
+
+  // icons
   const arrow_icon = (
     <Icon name="right" size={20} color="#fff" style={{marginLeft: 5}}/>
     );
@@ -43,11 +49,13 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
   return (
     <View style={styles.container}>
       <View style={{marginTop: 70, marginLeft: 20, marginRight: 20, }}>
+        
         <View style={{flexDirection: "row", width:"100%", justifyContent: "space-between"}}>
           <Text style={{color:"black", }}>{formattedDate}</Text>
           {menu_icon}
         </View>
 
+        {/* hamburger menu */}
         <Modal transparent={true} visible={showMenu}>
         <View style={{backgroundColor: "#000000aa", flex: 1, alignItems: 'center', justifyContent: "center", }}>
             <View style={{
@@ -79,7 +87,7 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
           </View>
         </Modal>
         
-
+        {/* greeting and avatar */}
         <View style={{flexDirection:"row", marginTop: 10, padding: 10, height:"40%", width: "100%",}}>
           <View style={{width:"35%", marginRight: 15, justifyContent:"center", alignItems:"center"}}>
             <Text style={{color:"black", }}>Hello, Tori!</Text>
@@ -93,7 +101,7 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
           </View>
         </View>
 
-       
+       {/* tips of the day */}
         <Text style={{color:"black", }}>Tips of the Day</Text>
         
         <View style={{flexDirection:"row", marginTop: 10, marginBottom: 0,}}>
@@ -104,7 +112,6 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
               {arrow_icon}
             </View>
           </Pressable>
-
           <Pressable onPress={() => {Alert.alert("Stretching is key for muscle development and injury prevention!")}} style={{height:"80%", width: "45%", borderRadius: 20, backgroundColor:"#98C6FC", margin: 10, justifyContent:"center", alignItems:"center", elevation: 5, shadowColor:"black"}}>
             <Text style={{color:"#fff", }}>Stretch often to{'\n'}keep limbs loose </Text>
             <View style={{flexDirection: "row", position: "absolute", bottom: 20, left: 20}} >
@@ -112,9 +119,7 @@ const HomeScreen = ({navigation}) => {  //navigation is a prop that is passed to
               {arrow_icon}
             </View>
           </Pressable>
-          
         </View>
-
       </View>
     </View>
   );
